@@ -4,6 +4,7 @@ require 'rake/clean'
 require 'rake/testtask'
 require 'rubygems/package_task'
 
+require 'logger'
 # Set global variable so other tasks can access them
 ::PROJECT_ROOT = File.expand_path(".")
 ::GEM_NAME = 'composite_primary_keys'

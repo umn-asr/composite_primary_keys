@@ -21,6 +21,8 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
+require "logger"
+
 unless defined?(ActiveRecord)
   require 'rubygems'
   gem 'activerecord', '~>7.0.0', '>= 7.0.1'
