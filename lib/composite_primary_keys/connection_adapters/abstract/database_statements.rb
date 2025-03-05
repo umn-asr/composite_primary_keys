@@ -1,10 +1,11 @@
 module ActiveRecord
   module ConnectionAdapters
     module DatabaseStatements
-      def insert(arel, name = nil, pk = nil, id_value = nil, sequence_name = nil, binds = [])
+      def insert(arel, name = nil, pk = nil, id_value = nil, sequence_name = nil, binds = [], returning: nil)
         sql, binds = to_sql_and_binds(arel, binds)
-        value = exec_insert(sql, name, binds, pk, sequence_name)
+        value = exec_insert(sql, name, binds, pk, sequence_name, returning: returning)
 
+        return returning_column_values(value) unless returning.nil?
         return id_value if id_value
         if pk.is_a?(Array) && value.respond_to?(:empty?) && !value.empty?
           # This is a CPK model and the query result is not empty. Thus we can figure out the new ids for each

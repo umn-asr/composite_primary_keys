@@ -73,16 +73,18 @@ module ActiveRecord
 
     def _create_record(attribute_names = self.attribute_names)
       attribute_names = attributes_for_create(attribute_names)
+      returning_columns = self.class._returning_columns_for_insert
 
-      new_id = self.class._insert_record(
-          attributes_with_values(attribute_names)
+      returning_values = self.class._insert_record(
+        attributes_with_values(attribute_names),
+        returning_columns
       )
 
       # CPK
       if self.composite?
-        self.id = self.id.zip(Array(new_id)).map {|id1, id2| id2.nil? ? id1 : id2}
+        self.id = self.id.zip(returning_values).map {|id1, id2| id2.nil? ? id1 : id2}
       else
-        self.id ||= new_id if self.class.primary_key
+        self.id ||= returning_values.first if self.class.primary_key
       end
 
       @new_record = false

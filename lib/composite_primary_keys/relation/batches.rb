@@ -1,7 +1,7 @@
 module CompositePrimaryKeys
   module ActiveRecord
     module Batches
-      def in_batches(of: 1000, start: nil, finish: nil, load: false, error_on_ignore: nil, order: :asc)
+      def in_batches(of: 1000, start: nil, finish: nil, load: false, error_on_ignore: nil, order: :asc, use_ranges: nil)
         relation = self
         unless block_given?
           return ::ActiveRecord::Batches::BatchEnumerator.new(of: of, start: start, finish: finish, relation: self)
