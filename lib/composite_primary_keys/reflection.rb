@@ -28,6 +28,13 @@ module ActiveRecord
       end
     end
 
+    class MacroReflection
+      private
+      def validate_reflection!
+        # noop nice try, ACtiveRecord, we really want to use the composite_primary_keys syntax
+      end
+    end
+
     class AssociationReflection < MacroReflection
       def foreign_key
         # CPK
