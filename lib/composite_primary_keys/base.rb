@@ -132,6 +132,10 @@ module ActiveRecord
       def to_key
         ids.to_a if !ids.compact.empty? # XXX Maybe use primary_keys with send instead of ids
       end
+
+      def to_param
+        ids.to_param
+      end
     end
   end
 end
