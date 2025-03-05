@@ -25,7 +25,7 @@ require "logger"
 
 unless defined?(ActiveRecord)
   require 'rubygems'
-  gem 'activerecord', '~>7.0.0', '>= 7.0.1'
+  gem 'activerecord', '~>7.1.0', '>= 7.1.0'
   require 'active_record'
 end
 
