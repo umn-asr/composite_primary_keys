@@ -1,14 +1,14 @@
 first_flat:
   product_id: 1
   tariff_id: 1
-  tariff_start_date: <%= Date.today.to_s(:db) %>
+  tariff_start_date: <%= Date.today.to_s %>
 
 first_free:
   product_id: 1
   tariff_id: 2
-  tariff_start_date: <%= Date.today.to_s(:db) %>
+  tariff_start_date: <%= Date.today.to_s %>
 
 second_free:
   product_id: 2
   tariff_id: 2
-  tariff_start_date: <%= Date.today.to_s(:db) %>
+  tariff_start_date: <%= Date.today.to_s %>
