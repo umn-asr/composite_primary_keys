@@ -62,7 +62,6 @@ require 'active_record/nested_attributes'
 
 require 'active_record/connection_adapters/abstract/database_statements'
 require 'active_record/connection_adapters/abstract_adapter'
-require 'active_record/connection_adapters/postgresql/database_statements'
 
 require 'active_record/relation/where_clause'
 require 'active_record/table_metadata'
