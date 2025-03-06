@@ -6,10 +6,12 @@ module ActiveRecord
     INVALID_FOR_COMPOSITE_KEYS = 'Not appropriate for composite primary keys'
     NOT_IMPLEMENTED_YET        = 'Not implemented for composite primary keys yet'
 
+    class_attribute :use_composite_primary_keys_gem, default: true
+
     class << self
       alias_method :primary_key_without_composite_key_support=, :primary_key=
       def primary_key=(keys)
-        unless keys.kind_of?(Array)
+        unless keys.kind_of?(Array) && self.use_composite_primary_keys_gem
           self.primary_key_without_composite_key_support = keys
           return
         end
